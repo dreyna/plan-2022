@@ -11,12 +11,92 @@
     <body>
         <div class="container-fluid" layout:fragment="page-content">            
             <nav class="navbar navbar-light bg-light m-2">
-                <h4 class="ps-3"><i class="fa-solid fa-user-tie me-2"></i></i>Autores</h4>
+                <h4 class="ps-3"><i class="fa-solid fa-user-tie me-2"></i>Autores</h4>
             </nav>
-         </div>
+            <div class="container mt-3">
+                <button type="button" class="btn btn-danger mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add</button>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-bordered" id="tablita">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">APELLIDO</th>
+                                    <th scope="col">ESTADO</th>
+                                    <th scope="col" colspan="2">ACCION</th>
+                                </tr>
+                            </thead>
+                            <tbody>                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL Guardar-->          
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New Autor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                    <input type="text" class="form-control" id="nombres">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="guardar">Registrar Autor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <!--Modal Editar-->
+            <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Autor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                    <input type="text" class="form-control" id="editar_nombres">
+                                    <input type="hidden" id="editar_id" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Apellidos:</label>
+                                    <input type="text" class="form-control" id="editar_apellidos">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="modificar">Modificar Autor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL -->
+        </div>
+
         <!--OTRO SCRIPTS PARA PAGINAS-->
     <th:block layout:fragment="page-scripts">
-
+        <script th:src="@{/js/actor.js}"></script>
     </th:block>
-    </body>
+
+</body>
 </html>

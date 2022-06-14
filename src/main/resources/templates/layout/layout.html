@@ -11,7 +11,9 @@
         <script src="https://kit.fontawesome.com/82a228b425.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
         <link th:href="@{/css/styles.css}" rel="stylesheet" />
+        
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -20,12 +22,12 @@
                 <div class="sidebar-heading border-bottom bg-primary text-white"><i class="fa-solid fa-book me-2"></i>Biblioteca</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/}"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/user}"><i class="fa-solid fa-users me-2"></i>Usuarios</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/lector}"><i class="fa-solid fa-people-group me-2"></i>Lectores</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/libro}"><i class="fa-solid fa-book me-2"></i>Libros</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/editorial}"><i class="fa-solid fa-school me-2"></i>Editorial</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/autor}"><i class="fa-solid fa-user-tie me-2"></i>Autores</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/prestamo}"><i class="fa-solid fa-book-open-reader me-2"></i>Prestamos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/user}"><i class="fa-solid fa-users me-2"></i>Usuarios</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/lector}"><i class="fa-solid fa-people-group me-2"></i>Lectores</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/libro}"><i class="fa-solid fa-book me-2"></i>Libros</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/editorial}"><i class="fa-solid fa-school me-2"></i>Editorial</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/autor}"><i class="fa-solid fa-user-tie me-2"></i>Autores</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 ps-5" th:href="@{/menu/prestamo}"><i class="fa-solid fa-book-open-reader me-2"></i>Prestamos</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -57,7 +59,10 @@
             </div>
         </div>
         <!-- Bootstrap core JS-->
-        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/js/jquery.js}"></script>       
+        <script th:src="@{/js/bootbox.min.js}"></script>
+        <script th:src="@{/js/bootbox.locales.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
         <!-- Core theme JS-->
         <script th:src="@{/js/scripts.js}"></script>
     <th:block layout:fragment="page-scripts">
