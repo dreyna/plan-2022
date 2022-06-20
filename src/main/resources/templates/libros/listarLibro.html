@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-book me-2"></i>Libros</h4>
+            </nav>
+            <div class="container mt-3">                
+                <a th:href="@{/libro/add}" class="btn btn-danger mb-4">
+                    <strong class="me-2">Add</strong><i class="fa-solid fa-angle-right"></i>
+                </a>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-bordered" id="tablita">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">TITULO</th>
+                                    <th scope="col">EDICIÓN</th>
+                                    <th scope="col">AUTOR</th>
+                                    <th scope="col">EDITORIAL</th>
+                                    <th scope="col">AÑO</th>
+                                    <th scope="col" colspan="2" class="text-center">ACCION</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <tr th:each="lib:${libros}">
+                                    <td scope="row" th:text="${lib.id}"></td>
+                                    <td th:text="${lib.titulo}"></td>
+                                    <td th:text="${lib.edicion}"></td>
+                                    <td th:text="${lib.autor.nombres}+' '+${lib.autor.apellidos}"></td>
+                                    <td th:text="${lib.editorial.nombre}"></td>
+                                    <td th:text="${lib.anos}"></td>
+                                    <td class="text-center">
+                                        <a th:href="@{/libro/edit/} + ${lib.id}" title="Editar Registro"><i class='fa-solid fa-pen-to-square text-warning me-3'></i></a>
+                                        <a th:href="@{/libro/delete/} + ${lib.id}" title="Eliminar Registro"><i class='fa-solid fa-trash-can text-danger me-3'></i></a>
+                                        <a th:href="@{/libro/detalle/} + ${lib.id}" title="Detalle Autor"><i class="fa-solid fa-eye text-info"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+
+    </th:block>
+</body>
+</html>

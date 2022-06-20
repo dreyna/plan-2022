@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-book me-2"></i>Libros</h4>
+            </nav>
+            <div class="container mt-3">
+                <h3 th:text="${titulo}"></h3>
+                <hr>
+                <form th:action="@{/libro/save}" method="post" enctype="multipart/form-data" th:object="${libro}">                    
+                    <div class="mb-3">                        
+                        <label for="recipient-name" class="col-form-label">Editorial:</label>
+                        <select th:field="*{editorial}" id="editorial" class="form-select">
+                            <option th:each="edit:${editoriales}" th:value="${edit.id}" th:text="${edit.nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">                        
+                        <label for="recipient-name" class="col-form-label">Autor:</label>
+                        <select th:field="*{autor}" id="autor" class="form-select">
+                            <option th:each="aut:${autores}" th:value="${aut.id}" th:text="${aut.nombres}+' '+${aut.apellidos}"/>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="hidden" th:field="*{id}"
+                        <label for="recipient-name" class="col-form-label">Titulo:</label>
+                        <input type="text" th:field="*{titulo}" class="form-control" name="titulo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Edición:</label>
+                        <input type="text" th:field="*{edicion}" class="form-control" name="edicion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Año:</label>
+                        <input type="text" class="form-control" th:field="*{anos}" id="anos">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('anos')}"
+                               th:errors="*{anos}"></small>
+                    </div>       
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Foto:</label>
+                        <input type="file" class="form-control" id="imagen" name="imagen">
+                    </div>
+                    <a th:href="@{/libro}" class="btn btn-secondary" >Cancel</a>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+            </div>
+         </div>
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+
+    </th:block>
+    </body>
+</html>

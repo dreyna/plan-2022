@@ -6,6 +6,10 @@ package com.example.plan.rest;
 
 import com.example.plan.entity.Autor;
 import com.example.plan.serviceImpl.AutorService;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -47,7 +53,21 @@ public class AutorRestController {
         autorService.delete(id);
     }
     @PostMapping("/add")
-    public Autor addPost(@RequestBody Autor autor) {  
+    public Autor addPost(@RequestBody Autor autor, @RequestParam("foto") MultipartFile imagen) {  
+        if(imagen.isEmpty()){
+            //Path dirimg = Paths.get("src//main//resources//static/images");
+            //String ruta = dirimg.toFile().getAbsolutePath();
+            String ruta = "E://recursos//images//autor";
+            
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutacompleta = Paths.get(ruta+"//"+imagen.getOriginalFilename());
+                Files.write(rutacompleta, bytesImg);
+                autor.setFoto(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                System.out.println("Error: "+e);
+            }
+        }
         return autorService.create(autor);
     }
     @PutMapping("/edit")

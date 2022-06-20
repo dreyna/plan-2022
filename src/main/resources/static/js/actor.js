@@ -1,21 +1,21 @@
-$(document).ready(function (){
+$(document).ready(function () {
     listar();
 });
-function listar(){
-   $.ajax({
+function listar() {
+    $.ajax({
         url: "/autor/all",
         type: 'GET',
         success: function (x) {
             $("#tablita tbody tr").remove();
-            x.forEach((item,index,array)=>{
+            x.forEach((item, index, array) => {
                 $("#tablita").append(
                         "<tr><td>" + (index + 1) + "</td><td>" + item.id + "</td><td>" + item.nombres
                         + "</td><td>" + item.apellidos + "</td><td>" + item.estado + "</td><td><a href='#' onclick='editar("
                         + item.id + ")'><i class='fa-solid fa-pen-to-square yelow'></i></a></td><td><a href='#' onclick='eliminar(" + item.id + ")'><i class='fa-solid fa-trash-can red'></i></a></td></tr>");
-                
+
             });
-    }
-   }); 
+        }
+    });
 }
 function editar(id) {
     $.ajax({
@@ -66,26 +66,37 @@ function eliminar(id) {
         }
     });
 }
+let foto= new Object();
+$("#foto").change(function (e) {
+    foto = e.target.files[0].name;
+
+});
+
 $("#guardar").click(function () {
-    var nombre = $("#nombres").val();
-    var apellido = $("#apellidos").val();
-    $.ajax({
-        url: "/autor/add",
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify({'nombres': nombre, 'apellidos': apellido, 'estado':true}),
-        cache: false,
-        success: function (w) {
-            bootbox.alert({
-                message: "Registro guardado correctamente...!",
-                callback: function () {
-                    console.log('This was logged in the callback!');
-                }
-            });
-            limpiar();
-            listar();
-        }
+    let nombre = $("#nombres").val();
+    let apellido = $("#apellidos").val();
+    let estado = false;
+    $("input[type=checkbox]:checked").each(function () {
+        estado = true;
     });
+    //alert(foto)
+     $.ajax({
+     url: "/autor/add",
+     type: 'POST',
+     contentType: "application/json; charset=utf-8",
+     data: JSON.stringify({'nombres': nombre, 'apellidos': apellido, 'estado':estado, 'foto':foto}),
+     cache: false,
+     success: function (w) {
+     bootbox.alert({
+     message: "Registro guardado correctamente...!",
+     callback: function () {
+     console.log('This was logged in the callback!');
+     }
+     });
+     limpiar();
+     listar();
+     }
+     });
     $("#exampleModal").modal('hide');
 });
 function limpiar() {
