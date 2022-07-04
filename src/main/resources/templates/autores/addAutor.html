@@ -18,7 +18,7 @@
                 <hr>
                 <form th:action="@{/autor/save}" method="post" enctype="multipart/form-data" th:object="${autor}">                    
                     <div class="mb-3">
-                        <input type="hidden" th:field="*{id}"
+                        <input type="hidden" th:field="*{id}">
                         <label for="recipient-name" class="col-form-label">Nombres:</label>
                         <input type="text" th:field="*{nombres}" class="form-control" name="nombres">
                     </div>

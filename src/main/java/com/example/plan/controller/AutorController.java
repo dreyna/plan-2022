@@ -32,6 +32,7 @@ public class AutorController {
     @GetMapping
     public String indexAutor(Model model){
         model.addAttribute("autores", autorService.readAll());
+      
         return "autores/listarAutor";
     }
     @GetMapping("/add")
@@ -50,11 +51,8 @@ public class AutorController {
     public String addAutor(@Valid @ModelAttribute Autor autor, BindingResult result, Model model, @RequestParam("file") MultipartFile imagen, RedirectAttributes attributes ) {  
 
         if(!imagen.isEmpty()){
-            //Path dirimg = Paths.get("src//main//resources//static/images");
             String ruta = "E://recursos//images//files1";
-            //String ruta = dirimg.toFile().getAbsolutePath();
-            //String ruta = "E://recursos//images//autor";
-            
+
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutacompleta = Paths.get(ruta+"//"+imagen.getOriginalFilename());

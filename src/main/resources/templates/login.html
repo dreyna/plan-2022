@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/82a228b425.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" th:href="@{/assets/logo.png}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="m-0 vh-100 row justify-content-center align-items-center ">
+            <form method="POST" th:action="@{/login}" class="w-25 border border-2 p-5 rounded-start">
+                <div class="w-100 text-center">
+                    <img th:src="@{/images/user.png}" alt="alt" width="200" height="200"/>
+                </div>
+                
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form2Example1">Usuario</label>
+                    <input type="text" id="username" class="form-control" name="username"/>                    
+                </div>
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form2Example2">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" />                    
+                </div>
+                <div class="d-grid gap-2 col-12 mx-auto mt-4">
+                    <input type="submit" value="Login" class="btn btn-primary"/>
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>
