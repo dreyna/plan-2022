@@ -27,7 +27,7 @@ public class MenuController {
     public String indexEdit(){
         return "editoriales/editorial";
     }
-*/
+
     
     @GetMapping("/lector")
     public String indexLector(){
@@ -44,5 +44,5 @@ public class MenuController {
     @GetMapping("/user")
     public String indexUser(){
         return "usuarios/user";
-    }
+    }*/
 }

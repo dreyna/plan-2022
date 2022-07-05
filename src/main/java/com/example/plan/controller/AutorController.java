@@ -8,6 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,7 +32,7 @@ public class AutorController {
     @Autowired
     private AutorService autorService;
     @GetMapping
-    public String indexAutor(Model model){
+    public String indexAutor(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("autores", autorService.readAll());
       
         return "autores/listarAutor";

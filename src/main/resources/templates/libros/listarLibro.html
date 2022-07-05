@@ -17,6 +17,12 @@
                 <a th:href="@{/libro/add}" class="btn btn-danger mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
                     <strong class="me-2">Add</strong><i class="fa-solid fa-angle-right"></i>
                 </a>
+                <a th:href="@{/libro/exportarPDF}" class="btn btn-secondary mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <strong class="me-2">Exportar a PDF</strong>
+                </a>
+                <a th:href="@{/libro/exportarExcel}" class="btn btn-success mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <strong class="me-2">Exportar a Excel</strong>
+                </a>
                 <div class="row">
                     <div class="col">
                         <table class="table table-bordered" id="tablita">

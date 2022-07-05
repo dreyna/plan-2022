@@ -4,6 +4,8 @@ import com.example.plan.entity.Editorial;
 import com.example.plan.serviceImpl.EditorialService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +27,7 @@ public class EditorialController {
     private EditorialService editorialService;
     
     @GetMapping
-    public String indexEditorial(Model model){
+    public String indexEditorial(Model model, @AuthenticationPrincipal User user){
         model.addAttribute("editoriales", editorialService.readAll());
         return "editoriales/listarEditorial";
     }

@@ -30,14 +30,14 @@ public class SecurityConfigConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/editar/**", "/agregar/**", "/eliminar")
-                .hasRole("ADMIN")
+                .antMatchers("/autor", "/editorial", "/libro").hasRole("USER")
+                .antMatchers("/autor/**", "/editorial/**", "/libro/**").hasRole("ADMIN")                
                 .antMatchers("/")
                 .hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .and()
-                .exceptionHandling().accessDeniedPage("/errores/403");
+                .exceptionHandling().accessDeniedPage("/errors/403");
     }
 }

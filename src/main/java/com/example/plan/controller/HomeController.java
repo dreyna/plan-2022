@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class HomeController {
+    
+    
     @GetMapping("/login")
-    public String login(Model model, @AuthenticationPrincipal User user){
-        model.addAttribute("titulo", "Bienvenido a Thymeleaf");
+    public String login(Model model, @AuthenticationPrincipal User user){        
+        //model.addAttribute("user", user.getUsername());
         return "login";
     }
     @GetMapping("/")
