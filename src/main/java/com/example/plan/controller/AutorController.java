@@ -33,8 +33,7 @@ public class AutorController {
     private AutorService autorService;
     @GetMapping
     public String indexAutor(Model model, @AuthenticationPrincipal User user){
-        model.addAttribute("autores", autorService.readAll());
-      
+        model.addAttribute("autores", autorService.readAll());      
         return "autores/listarAutor";
     }
     @GetMapping("/add")
