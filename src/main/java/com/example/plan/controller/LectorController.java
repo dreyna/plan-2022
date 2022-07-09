@@ -22,7 +22,7 @@ public class LectorController {
     
     @GetMapping
     public String indexLibro(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("libros", lectorService.readAll());
+        model.addAttribute("lectores", lectorService.readAll());
         return "lector/listarLector";
     }
 }

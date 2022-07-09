@@ -35,6 +35,7 @@ public class Lector implements Serializable{
     @Column(name="idlector")
     private int id;
     private String nombres;
+    private String apellidos;
     private String dni;
     private String telefono;
     private String correo;

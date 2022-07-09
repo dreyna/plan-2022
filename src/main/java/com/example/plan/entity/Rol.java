@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,7 @@ public class Rol {
     private int id;
     private String nombre;
     private boolean estado;  
-    @OneToMany
-    @JoinColumn(name="idrol")
-    private List<Usuario> user;
+    @ManyToOne()
+    @JoinColumn(name="idusuario")
+    private Usuario usuario;
 }
