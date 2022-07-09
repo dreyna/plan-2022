@@ -25,5 +25,13 @@ public class Usuario implements Serializable{
     @OneToMany
     @JoinColumn(name="idusuario")
     private List<Rol> roles;
+    
+    @OneToMany
+    @JoinColumn(name="idusuario")
+    private List<Prestamo> prestamos;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
+    private Empleado empleado;
 
 }

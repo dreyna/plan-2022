@@ -26,28 +26,21 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "libro")
-public class Libro implements Serializable {
+@Table(name = "prestamo")
+public class Prestamo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idlibro")
+    @Column(name="idprestamo")
     private int id;
-    private String titulo;
-    private String edicion;
-    
+    private String fecha_salida;
+    private boolean estado;
     @ManyToOne
-    @JoinColumn(name = "idautor")
-    private Autor autor;
-    
+    @JoinColumn(name = "idlector")
+    private Lector lector;
     @ManyToOne
-    @JoinColumn(name = "ideditorial")
-    private Editorial editorial;
-    
-    private String imagen;
-    private int anos;
-    
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
     @OneToMany
-    @JoinColumn(name="idlibro")
+    @JoinColumn(name="idprestamo")
     private List<Detalle> detalle;
-    
 }

@@ -2,7 +2,6 @@
 package com.example.plan.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,28 +24,20 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "libro")
-public class Libro implements Serializable {
+@Table(name = "detalle")
+public class Detalle implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idlibro")
+    @Column(name="iddetalle")
     private int id;
-    private String titulo;
-    private String edicion;
-    
+    private String fecha_fecha_devol;
+    private double mora;
+    private boolean estado;
     @ManyToOne
-    @JoinColumn(name = "idautor")
-    private Autor autor;
-    
+    @JoinColumn(name = "idprestamo")
+    private Prestamo prestamo;
     @ManyToOne
-    @JoinColumn(name = "ideditorial")
-    private Editorial editorial;
-    
-    private String imagen;
-    private int anos;
-    
-    @OneToMany
-    @JoinColumn(name="idlibro")
-    private List<Detalle> detalle;
+    @JoinColumn(name = "idlibro")
+    private Libro libro;
     
 }

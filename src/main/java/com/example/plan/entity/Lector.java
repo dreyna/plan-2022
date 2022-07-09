@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.example.plan.entity;
 
 import java.io.Serializable;
@@ -9,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,28 +28,18 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "libro")
-public class Libro implements Serializable {
+@Table(name = "lector")
+public class Lector implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idlibro")
+    @Column(name="idlector")
     private int id;
-    private String titulo;
-    private String edicion;
-    
-    @ManyToOne
-    @JoinColumn(name = "idautor")
-    private Autor autor;
-    
-    @ManyToOne
-    @JoinColumn(name = "ideditorial")
-    private Editorial editorial;
-    
-    private String imagen;
-    private int anos;
-    
+    private String nombres;
+    private String dni;
+    private String telefono;
+    private String correo;
+    private boolean estado;
     @OneToMany
-    @JoinColumn(name="idlibro")
-    private List<Detalle> detalle;
-    
+    @JoinColumn(name="idlector")
+    private List<Prestamo> prestamos;
 }
